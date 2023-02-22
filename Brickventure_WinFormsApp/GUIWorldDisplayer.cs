@@ -77,12 +77,8 @@ namespace Brickventure_WinFormsApp
                         //{
                         //    _guiRoomMap[gameField[0, y, x]].ImageLocation = @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\Upgrade-Final.png";
                         //}
-                        
-
                     }
-                   
                 }
-
             }
         }
         public void CreateRoomTypeMap()//TODO Rename
@@ -96,9 +92,7 @@ namespace Brickventure_WinFormsApp
         }
         public void SetRoomPicture(string picture)
         {
-            
             //.ImageLocation = picture;//Set Stani IMG for Rooms something like ?
-            
         }
 
         public void FillRoomList()

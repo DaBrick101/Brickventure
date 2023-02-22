@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32126.315
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Brickventure_Library", "Brickventure_Library_0.1\Brickventure_Library.csproj", "{E60F17E4-FC50-462D-97F7-19F7DFCB4DB2}"
 EndProject
@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Brickventure_ConsoleApp", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrickventureLibraryUnitTests", "BrickventureLibraryUnitTests\BrickventureLibraryUnitTests.csproj", "{2AD7DAD3-B838-4087-9C95-E3F7D22258D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brickventure_WinFormsApp", "Brickventure_WinFormsApp\Brickventure_WinFormsApp.csproj", "{F1C5E529-EBB2-4CAA-9AE0-7A090F4BECE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Brickventure_WinFormsApp", "Brickventure_WinFormsApp\Brickventure_WinFormsApp.csproj", "{F1C5E529-EBB2-4CAA-9AE0-7A090F4BECE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrickventureWebAPI", "BrickventureWebAPI\BrickventureWebAPI.csproj", "{7C5CB873-FFB6-427B-822E-11860923AD33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F1C5E529-EBB2-4CAA-9AE0-7A090F4BECE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1C5E529-EBB2-4CAA-9AE0-7A090F4BECE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1C5E529-EBB2-4CAA-9AE0-7A090F4BECE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C5CB873-FFB6-427B-822E-11860923AD33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C5CB873-FFB6-427B-822E-11860923AD33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C5CB873-FFB6-427B-822E-11860923AD33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C5CB873-FFB6-427B-822E-11860923AD33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

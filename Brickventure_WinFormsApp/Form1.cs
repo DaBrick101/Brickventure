@@ -12,7 +12,7 @@ namespace Brickventure_WinFormsApp
     {
         private List<PictureBox> _GUIRooms = new List<PictureBox>();
         private IWorld _world;
-        private IController keyboardController;
+        private IController _keyboardController;
         private ICommand displayWorld;
         private IPlayerStateTimer playerStateTimer;
         private Dictionary<IRoom, PictureBox> _guiRoomMap = new Dictionary<IRoom, PictureBox>();
@@ -29,7 +29,7 @@ namespace Brickventure_WinFormsApp
         }
         private void BrickventureForm_Load(object sender, EventArgs e)
         {
-            keyboardController = GUIServiceFactory.Instance.GetService<IController>();
+            _keyboardController = GUIServiceFactory.Instance.GetService<IController>();
             displayWorld = GUIServiceFactory.Instance.GetKeyedService<ICommand>("display");
             playerStateTimer = GUIServiceFactory.Instance.GetService<IPlayerStateTimer>();
 
@@ -131,7 +131,7 @@ namespace Brickventure_WinFormsApp
             info_Textbox.Clear();
             
             _key = e.KeyCode.ToString().ToLower();
-            keyboardController.PerformCommand(_key);
+            _keyboardController.PerformCommand(_key);
             displayWorld.Execute();
         }
 
@@ -142,13 +142,14 @@ namespace Brickventure_WinFormsApp
 
         private void Attack_Button_Click(object sender, EventArgs e)
         {
-            keyboardController.PerformCommand("q");
+            _keyboardController.PerformCommand("q");
+            displayWorld.Execute();
         }
 
         private void Defend_Button_Click(object sender, EventArgs e)
         {
-            keyboardController.PerformCommand("e");
-          
+            _keyboardController.PerformCommand("e");
+            displayWorld.Execute();
         }
     }
 }
