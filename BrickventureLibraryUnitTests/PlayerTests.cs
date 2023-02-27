@@ -17,7 +17,7 @@ namespace BrickventureLibraryUnitTests
             //Arrange
             var worldMock = new Mock<IWorld>();
             var roomMock = new Mock<IRoom>();
-            var player = new Player(worldMock.Object);
+            var player = new Player(worldMock.Object, null);
             var partecipants = new List<IPartecipant> { player };
 
             roomMock.Setup(rm => rm.GetRoomType()).Returns(RoomType.EnemyRoom);
@@ -40,7 +40,7 @@ namespace BrickventureLibraryUnitTests
             //Arrange
             var worldMock = new Mock<IWorld>();
             var roomMock = new Mock<IRoom>();
-            var player = new Player(worldMock.Object);
+            var player = new Player(worldMock.Object, null);
             var partecipants = new List<IPartecipant> { player };
 
             roomMock.Setup(rm => rm.GetRoomType()).Returns(RoomType.EnemyRoom);
@@ -59,7 +59,7 @@ namespace BrickventureLibraryUnitTests
             //Arrange
             var worldMock = new Mock<IWorld>();
             var roomMock = new Mock<IRoom>();
-            var player = new Player(worldMock.Object);
+            var player = new Player(worldMock.Object, null);
             var partecipants = new List<IPartecipant> { player };
 
             roomMock.Setup(rm => rm.GetRoomType()).Returns(RoomType.EnemyRoom);
@@ -78,7 +78,7 @@ namespace BrickventureLibraryUnitTests
             //Arrange
             var worldMock = new Mock<IWorld>();
             var roomMock = new Mock<IRoom>();
-            var player = new Player(worldMock.Object);
+            var player = new Player(worldMock.Object, null);
             var partecipants = new List<IPartecipant> { player };
 
             roomMock.Setup(rm => rm.GetRoomType()).Returns(RoomType.EnemyRoom);

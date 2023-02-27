@@ -200,6 +200,7 @@ namespace Brickventure_Library.Environment
         {
             _player = player;
             _player.SetRoom(_gameField[0, 2, 0]);
+            _gameField[0, 2, 0].AddPartecipant(player);
         }
 
         public int GetX()

@@ -69,30 +69,23 @@ namespace Brickventure_WinFormsApp
                         {
                             _guiRoomMap[gameField[0, y, x]].ImageLocation = @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\Heal-Final.png";
                         }
-                        //else if(gameField[0, y, x].GetRoomType() == RoomType.ShopRoom)
-                        //{
-                        //    _guiRoomMap[gameField[0, y, x]].ImageLocation = @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\shop-Final.png";
-                        //}
-                        //else if(gameField[0, y, x].GetRoomType() == RoomType.UpgradeRoom)
-                        //{
-                        //    _guiRoomMap[gameField[0, y, x]].ImageLocation = @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\Upgrade-Final.png";
-                        //}
                     }
                 }
             }
         }
         public void CreateRoomTypeMap()//TODO Rename
+            // 180 days later, brick forgot and is never going to change the name xD
         {
             _roomTypeMap.Add(RoomType.SpawnRoom, @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\Spawn-Final.png");
             _roomTypeMap.Add(RoomType.EnemyRoom, @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\Enemy-Final.png");
             _roomTypeMap.Add(RoomType.HealRoom, @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\Heal-Final.png");
-            //_roomTypeMap.Add(RoomType.ShopRoom, @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\shop-Final.png");
-            //_roomTypeMap.Add(RoomType.UpgradeRoom, @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\Upgrade-Final.png");
             _roomTypeMap.Add(RoomType.BossRoom, "C:\\Users\\lbhbur1\\source\\repos\\Brickventure_Library_0.1\\Brickventure_WinFormsApp\\Images\\EnemyRoom.png");
         }
         public void SetRoomPicture(string picture)
         {
             //.ImageLocation = picture;//Set Stani IMG for Rooms something like ?
+            //same here bruh
+            //yarrak yarr
         }
 
         public void FillRoomList()

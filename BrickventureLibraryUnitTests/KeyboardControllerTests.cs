@@ -47,7 +47,7 @@ namespace BrickventureLibraryUnitTests
             //Arrange
             var invoker = new Invoker();
             var world = new World();
-            var player = new Player(world);
+            var player = new Player(world, null);
             var moveNorthCommand = new MoveNorthCommand(world);
             List<ICommand> listCommands = new List<ICommand>();
             listCommands.Add(moveNorthCommand);
@@ -67,7 +67,7 @@ namespace BrickventureLibraryUnitTests
             //Arrange
             var invoker = new Invoker();
             var world = new World();
-            var player = new Player(world);
+            var player = new Player(world, null);
             var moveNorthCommand = new MoveNorthCommand(world);
             List<ICommand> listCommands = new List<ICommand>();
             listCommands.Add(moveNorthCommand);
@@ -88,7 +88,7 @@ namespace BrickventureLibraryUnitTests
             //Arrange
             var invoker = new Invoker();
             var world = new World();
-            var player = new Player(world);
+            var player = new Player(world, null);
             var moveEastCommand = new MoveEastCommand(world);
             List<ICommand> listCommands = new List<ICommand>();
             listCommands.Add(moveEastCommand);
@@ -113,7 +113,7 @@ namespace BrickventureLibraryUnitTests
             //Arrange
             var invoker = new Invoker();
             var world = new World();
-            var player = new Player(world);
+            var player = new Player(world, null);
             var moveSouthCommand = new MoveSouthCommand(world);
             List<ICommand> listCommands = new List<ICommand>();
             listCommands.Add(moveSouthCommand);
@@ -135,7 +135,7 @@ namespace BrickventureLibraryUnitTests
             //Arrange
             var invoker = new Invoker();
             var world = new World();
-            var player = new Player(world);
+            var player = new Player(world, null);
             var moveWestCommand = new MoveWestCommand(world);
             List<ICommand> listCommands = new List<ICommand>();
             listCommands.Add(moveWestCommand);
@@ -156,7 +156,7 @@ namespace BrickventureLibraryUnitTests
             var invoker = new Invoker();
             var world = new World();
             var attackCommand = new AttackCommand(world);
-            var player = new Player(world);
+            var player = new Player(world, null);
             List<ICommand> listCommands = new List<ICommand>();
             listCommands.Add(attackCommand);
             listCommands.AsEnumerable();
@@ -177,7 +177,7 @@ namespace BrickventureLibraryUnitTests
             var invoker = new Invoker();
             var world = new World();
             var defendCommand = new DefendCommand(world);
-            var player = new Player(world);
+            var player = new Player(world, null);
             List<ICommand> listCommands = new List<ICommand>();
             listCommands.Add(defendCommand);
             listCommands.AsEnumerable();

@@ -1,6 +1,7 @@
 ﻿using Brickventure_Library.Environment;
 using Brickventure_Library.Partecipants;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Brickventure_Library_0._1.Environment
 {
@@ -12,9 +13,6 @@ namespace Brickventure_Library_0._1.Environment
         private int _z;
         private int _y;
         private int _x;
-
-
-
 
         public Room(RoomType roomType, int z, int y, int x)
         {
@@ -75,5 +73,6 @@ namespace Brickventure_Library_0._1.Environment
         {
             return wasVisitedByPlayer;
         }
+        
     }
 }

@@ -19,7 +19,6 @@ namespace BrickventureLibraryUnitTests
             var worldMock = new Mock<IWorld>();
             var playerMock = new Mock<IPlayer>();
 
-            roomMock.Setup(rm => rm.GetRoomType()).Returns(RoomType.ShopRoom);
             worldMock.Setup(wm => wm.GetCurrentRoom()).Returns(roomMock.Object);
 
             var world = worldMock.Object;
