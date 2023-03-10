@@ -1,4 +1,5 @@
-﻿using Brickventure_Library.Environment;
+﻿using System;
+using Brickventure_Library.Environment;
 using Brickventure_Library.Partecipants;
 using Brickventure_Library_0._1.States;
 
@@ -34,10 +35,12 @@ namespace Brickventure_Library_0._1.Partecipants
             {
                 if (_state is AttackPlayerState)
                 {
+                    Console.WriteLine("must attack");
                     _writer.Write("Quick you have to Attack!!!");
                 }
                 else if (_state is DefendPlayerState)
                 {
+                    Console.WriteLine("must defend");
                     _writer.Write("You missed!!! Quick you have to Defend");
                 }
                 else if (_state is DeadPlayerState)

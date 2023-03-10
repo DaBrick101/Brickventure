@@ -27,5 +27,15 @@ namespace Brickventure_WinFormsApp
                 _form.GetTextBox().Text = string.Format(message);
             }));
         }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetMessage()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

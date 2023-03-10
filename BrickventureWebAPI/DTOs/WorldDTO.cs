@@ -1,61 +1,34 @@
 ﻿using Brickventure_Library.Environment;
 using Brickventure_Library.Partecipants;
+using Brickventure_Library_0._1;
 using Brickventure_Library_0._1.Environment;
 
 namespace BrickventureWebAPI.DTOs
 {
-    public class WorldDTO : IWorld
+    public class WorldDTO
     {
         private readonly IWorld _world;
+        public string Message { get; set; }
+        public IList<RoomDTO> GameField { get; set; }
 
-        public WorldDTO(IWorld world)
+        public WorldDTO(IWorld world, IOutputMessageWriter messageOutputWriter)
         {
             _world = world;
+            Message = messageOutputWriter.GetMessage();
+            GameField = GetRoomDTOList();
         }
-        public IRoom GetCurrentRoom()
+        private IList<RoomDTO> GetRoomDTOList()
         {
-            return _world.GetCurrentRoom();
-        }
+            List<RoomDTO> roomList = new List<RoomDTO>();
 
-        public IRoom[,,] GetGameField()
-        {
-            var gameField = _world.GetGameField();
-            return gameField;
-        }
+            var iroomList = _world.GetGameField();
+            foreach (var iroom in iroomList)
+            {
+                RoomDTO room = new RoomDTO(iroom);
+                roomList.Add(room);
+            }
 
-        public IPlayer GetPlayer()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetPlayer(IPlayer player)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IRoom GetRoomToMoveInto(Direction direction)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void MovePlayer(Direction direction)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetX()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetY()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetZ()
-        {
-            throw new NotImplementedException();
+            return roomList;
         }
     }
 }

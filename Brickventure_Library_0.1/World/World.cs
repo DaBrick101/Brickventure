@@ -13,7 +13,7 @@ namespace Brickventure_Library.Environment
         private IEnemy _enemy;
 
 
-        private const int gameFieldMaxZ = 3;
+        private const int gameFieldMaxZ = 1;
         private const int gameFieldMaxY = 5;
         private const int gameFieldMaxX = 10;
         private readonly Room spawnRoomFloor1 = new Room(RoomType.SpawnRoom, 0, 2, 0);
@@ -43,8 +43,7 @@ namespace Brickventure_Library.Environment
             //_gameField[0, 3, 0] = spawnRoomGUIFloor1;
 
             _gameField[0, 2, 0] = spawnRoomFloor1;//Fixed SpawnRoom on Floor 0
-            _gameField[1, 0, 2] = spawnRoomFloor2;//Fixed SpawnRoom on Floor 1
-            _gameField[2, 0, 2] = spawnRoomFloor3;//Fixed SpawnRoom on Floor 2
+            
 
             //_gameField[0, 2, 2] = BossRoomFloor1;//Fixed BossRoom on Floor 0
             //_gameField[1, 2, 2] = BossRoomFloor2;//Fixed BossRoom on Floor 1

@@ -1,4 +1,5 @@
-﻿using Brickventure_Library.Environment;
+﻿using System;
+using Brickventure_Library.Environment;
 using Brickventure_Library.Partecipants;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,6 +13,9 @@ namespace Brickventure_Library_0._1.States
     {
         private readonly IPlayer _player;
         private readonly IWorld _world;
+        private bool _isRunning;
+        
+        
         public PlayerStateTimer(IPlayer player, IWorld world)
         {
             _player = player;
@@ -21,12 +25,14 @@ namespace Brickventure_Library_0._1.States
         //Check if i get stateX if StateY
         internal void PlayerStateChange(object sender, ElapsedEventArgs e)
         {
+            Console.WriteLine($"elapsed {DateTime.Now.ToLongTimeString()}");
             if (_world.GetCurrentRoom().GetRoomType() == RoomType.EnemyRoom && _world.GetCurrentRoom().GetPartecipants().OfType<IEnemy>().Any())
             {
                 if (_player.GetState() != null && !_player.GetState().WasSuccessfull())
                 {
                     if (_player.GetHealth() == 0)
                     {
+                        Console.WriteLine($"State  dead");
                         _player.SetState(new DeadPlayerState());
                     }
                     _player.SetState(new DefendPlayerState(_world));
@@ -35,10 +41,12 @@ namespace Brickventure_Library_0._1.States
                 {
                     if (_player.GetState().GetType() == typeof(AttackPlayerState))
                     {
+                        Console.WriteLine($"State  defend");
                         _player.SetState(new DefendPlayerState(_world));
                     }
                     else
                     {
+                        Console.WriteLine($"State  attack");
                         _player.SetState(new AttackPlayerState(_world));
                     }
                 }
@@ -51,9 +59,14 @@ namespace Brickventure_Library_0._1.States
 
         public void Start()
         {
-            var timer = new Timer(1000);
+            if (_isRunning)
+            {
+                return;
+            }
+            var timer = new Timer(5000);
             timer.Elapsed += PlayerStateChange;
             timer.Start();
+            _isRunning = true;
         }
     }
 }

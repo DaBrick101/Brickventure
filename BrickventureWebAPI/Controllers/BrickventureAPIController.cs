@@ -19,37 +19,24 @@ namespace BrickventureWebAPI.Controllers
     {
         private readonly IWorld _world;
         private readonly IOutputMessageWriter _messageWriter;
-        public BrickventureAPIController(IWorld world, IOutputMessageWriter messageWriter)
+        private readonly IController _controller;
+        private readonly IOutputMessageWriter _outputMessageWriter;
+        private readonly IPlayerStateTimer _playerStateTimer;
+        public BrickventureAPIController(IWorld world, IOutputMessageWriter messageWriter, IController controller, IOutputMessageWriter outputMessageWriter, IPlayerStateTimer playerStateTimer)
         {
             _world = world;
             _messageWriter = messageWriter; 
+            _controller = controller;
+            _outputMessageWriter = outputMessageWriter;
+            _playerStateTimer = playerStateTimer;
         }
 
         [HttpGet]
         [Microsoft.AspNetCore.Mvc.Route("GetWorldGameField")]
-        public IList<RoomDTO>GetWorldGameField()
+        public WorldDTO GetWorldGameField()
         {
-            try
-            {
-                WorldDTO world = new WorldDTO(_world);
-
-                //RoomDTO room = new RoomDTO(world.GetCurrentRoom());
-                List<RoomDTO> roomList = new List<RoomDTO>();
-
-                var iroomList = world.GetGameField();
-                foreach (var iroom in iroomList)
-                {
-                    RoomDTO room = new RoomDTO(iroom);
-                    roomList.Add(room);
-                }
-
-                return roomList;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-            
+            _playerStateTimer.Start();
+            return new WorldDTO(_world, _outputMessageWriter);
         }
 
         [HttpGet]
@@ -59,6 +46,47 @@ namespace BrickventureWebAPI.Controllers
             var p = new Player(_world, _messageWriter);
             return new PartecipantDTO(p);
         }
+
+        [HttpGet]
+        [Microsoft.AspNetCore.Mvc.Route("MoveUp")]
+        public WorldDTO MoveUp()
+        {
+            _outputMessageWriter.Clear();
+            _controller.PerformCommand("w");
+            return new WorldDTO(_world, _outputMessageWriter);
+        }
+
+        [HttpGet]
+        [Microsoft.AspNetCore.Mvc.Route("MoveLeft")]
+        public WorldDTO MoveLeft()
+        {
+            _outputMessageWriter.Clear();
+            _controller.PerformCommand("a");
+            return new WorldDTO(_world, _outputMessageWriter);
+        }
+
+        [HttpGet]
+        [Microsoft.AspNetCore.Mvc.Route("MoveDown")]
+        public WorldDTO MoveDown()
+        {
+
+            _outputMessageWriter.Clear();
+            _controller.PerformCommand("s");
+            return new WorldDTO(_world, _outputMessageWriter);
+        }
+
+        [HttpGet]
+        [Microsoft.AspNetCore.Mvc.Route("MoveRight")]
+        public WorldDTO MoveRight()
+        {
+            _outputMessageWriter.Clear();
+            
+            _controller.PerformCommand("d");
+            return new WorldDTO(_world, _outputMessageWriter);
+        }
+
+
+
 
     }
 }
