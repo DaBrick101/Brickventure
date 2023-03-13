@@ -26,16 +26,23 @@ namespace Brickventure_Library_0._1.States
         internal void PlayerStateChange(object sender, ElapsedEventArgs e)
         {
             Console.WriteLine($"elapsed {DateTime.Now.ToLongTimeString()}");
+            if (_player.GetState() != null && _player.GetState().GetType() == typeof(DeadPlayerState))
+            {
+                return;
+            }
             if (_world.GetCurrentRoom().GetRoomType() == RoomType.EnemyRoom && _world.GetCurrentRoom().GetPartecipants().OfType<IEnemy>().Any())
             {
                 if (_player.GetState() != null && !_player.GetState().WasSuccessfull())
                 {
-                    if (_player.GetHealth() == 0)
+                    if (_player.GetHealth() <= 0)
                     {
                         Console.WriteLine($"State  dead");
                         _player.SetState(new DeadPlayerState());
                     }
-                    _player.SetState(new DefendPlayerState(_world));
+                    else
+                    {
+                        _player.SetState(new DefendPlayerState(_world));
+                    }
                 }
                 else
                 {

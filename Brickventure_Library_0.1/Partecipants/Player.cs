@@ -17,6 +17,7 @@ namespace Brickventure_Library_0._1.Partecipants
             _world = world;
             _world.SetPlayer(this);
             _writer = writer;
+            SetState(new IdlePlayerState());
         }
         public override void Attack()
         {
@@ -41,17 +42,13 @@ namespace Brickventure_Library_0._1.Partecipants
                 else if (_state is DefendPlayerState)
                 {
                     Console.WriteLine("must defend");
-                    _writer.Write("You missed!!! Quick you have to Defend");
+                    _writer.Write("You missed!!! Quick you have to Defend"); 
+                    _health = _health - 1;
                 }
                 else if (_state is DeadPlayerState)
                 {
-                    _health = _health - 1;
-                    if(_health == 0)
-                    {
-                        _world.GetCurrentRoom().RemovePartecipant(this);
-                        _writer.Write("GAME OVER!!!");
-                    }
-                    
+                    _world.GetCurrentRoom().RemovePartecipant(this);
+                    _writer.Write("GAME OVER!!!");
                 }
 
             }

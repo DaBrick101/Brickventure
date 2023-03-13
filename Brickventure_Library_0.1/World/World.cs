@@ -1,6 +1,7 @@
 ﻿using Brickventure_Library.Partecipants;
 using Brickventure_Library_0._1.Environment;
 using Brickventure_Library_0._1.Partecipants;
+using Brickventure_Library_0._1.States;
 
 namespace Brickventure_Library.Environment
 {
@@ -118,6 +119,7 @@ namespace Brickventure_Library.Environment
         }
         public void MovePlayer(Direction direction)
         {
+            _player.SetState(new IdlePlayerState());
             IRoom nextRoom = GetRoomToMoveInto(direction);
             IRoom currentRoom = _player.GetCurrentRoom();
             currentRoom.SetWasVisitedByPlayer();
