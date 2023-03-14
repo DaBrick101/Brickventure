@@ -84,9 +84,23 @@ namespace BrickventureWebAPI.Controllers
             _controller.PerformCommand("d");
             return new WorldDTO(_world, _outputMessageWriter);
         }
+        [HttpGet]
+        [Microsoft.AspNetCore.Mvc.Route("Attack")]
+        public WorldDTO Attack()
+        {
+            _outputMessageWriter.Clear();
 
+            _controller.PerformCommand("q");
+            return new WorldDTO(_world, _outputMessageWriter);
+        }
+        [HttpGet]
+        [Microsoft.AspNetCore.Mvc.Route("Defend")]
+        public WorldDTO Defend()
+        {
+            _outputMessageWriter.Clear();
 
-
-
+            _controller.PerformCommand("e");
+            return new WorldDTO(_world, _outputMessageWriter);
+        }
     }
 }
