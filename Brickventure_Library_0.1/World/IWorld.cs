@@ -14,5 +14,7 @@ namespace Brickventure_Library.Environment
         int GetX();
         int GetY();
         int GetZ();
+
+        bool DidPlayerWin();
     }
 }

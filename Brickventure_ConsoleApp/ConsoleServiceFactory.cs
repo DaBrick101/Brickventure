@@ -30,7 +30,7 @@ namespace Brickventure_ConsoleApp
         {
             var builder = GetConfiguredLibServices();
             builder.RegisterType<ConsoleWorldDisplayer>().As<IWorldDisplayer>();
-
+            builder.RegisterType<ConsoleOutputMessageWriter>().As<IOutputMessageWriter>();
 
             return builder.Build();
         }

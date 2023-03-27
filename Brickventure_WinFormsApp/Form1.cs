@@ -17,9 +17,9 @@ namespace Brickventure_WinFormsApp
         private IPlayerStateTimer playerStateTimer;
         private Dictionary<IRoom, PictureBox> _guiRoomMap = new Dictionary<IRoom, PictureBox>();
         private IRoom[,,] _gameField;
-        private int gameFieldMaxZ = 3;
-        private int gameFieldMaxY = 5;
-        private int gameFieldMaxX = 10;
+        private int gameFieldMaxZ = 1;
+        private int gameFieldMaxY = 3;
+        private int gameFieldMaxX = 3;
         private string _key;
 
         public BrickventureForm(IWorld world)

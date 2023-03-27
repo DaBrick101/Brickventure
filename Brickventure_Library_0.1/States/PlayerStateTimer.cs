@@ -30,6 +30,12 @@ namespace Brickventure_Library_0._1.States
             {
                 return;
             }
+
+            if (_world.DidPlayerWin())
+            {
+                _player.SetState(new WonPlayerState());
+                return;
+            }
             if (_world.GetCurrentRoom().GetRoomType() == RoomType.EnemyRoom && _world.GetCurrentRoom().GetPartecipants().OfType<IEnemy>().Any())
             {
                 if (_player.GetState() != null && !_player.GetState().WasSuccessfull())

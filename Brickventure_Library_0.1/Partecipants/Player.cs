@@ -50,6 +50,11 @@ namespace Brickventure_Library_0._1.Partecipants
                     _world.GetCurrentRoom().RemovePartecipant(this);
                     _writer.Write("GAME OVER!!!");
                 }
+                else if (_state is WonPlayerState)
+                {
+                    _writer.Write("You Won!!!");
+                }
+                
 
             }
         }
