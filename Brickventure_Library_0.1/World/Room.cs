@@ -73,6 +73,11 @@ namespace Brickventure_Library_0._1.Environment
         {
             return wasVisitedByPlayer;
         }
+
+        public void SetRoomType(RoomType roomtype)
+        {
+            this._roomType = roomtype;
+        }
         
     }
 }

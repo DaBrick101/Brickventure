@@ -3,6 +3,7 @@ using Brickventure_Library_0._1.Environment;
 using Brickventure_Library_0._1.Partecipants;
 using Brickventure_Library_0._1.States;
 using System.Linq;
+using System.Numerics;
 
 namespace Brickventure_Library.Environment
 {
@@ -16,18 +17,8 @@ namespace Brickventure_Library.Environment
 
 
         private const int gameFieldMaxZ = 1;
-        private const int gameFieldMaxY = 3;
-        private const int gameFieldMaxX = 3;
-        private readonly Room spawnRoomFloor1 = new Room(RoomType.SpawnRoom, 0, 2, 0);
-        private readonly Room spawnRoomFloor2 = new Room(RoomType.SpawnRoom, 1, 0, 2);
-
-        private readonly Room spawnRoomFloor3 = new Room(RoomType.SpawnRoom, 2, 0, 2);
-        //private readonly Room BossRoomFloor1 = new Room(RoomType.BossRoom, 0, 2, 2);
-        //private readonly Room BossRoomFloor2 = new Room(RoomType.BossRoom, 1, 2, 2);
-        //private readonly Room BossRoomFloor3 = new Room(RoomType.BossRoom, 2, 2, 2);
-
-        // private readonly Room spawnRoomGUIFloor1 = new Room(RoomType.SpawnRoom, 0, 3, 0);
-
+        private const int gameFieldMaxY = 5;
+        private const int gameFieldMaxX = 5;
 
 
 
@@ -35,24 +26,14 @@ namespace Brickventure_Library.Environment
         {
             _gameField = new IRoom[gameFieldMaxZ, gameFieldMaxY, gameFieldMaxX];
             GenerateRooms();
-            //_player = ServiceFactory.Instance.GetService<IPlayer>();
-            //_player = new Player(this);
-
         }
 
         private void GenerateRooms()
         {
-            //fixed Spawnrooms für GUI machen!
-            //_gameField[0, 3, 0] = spawnRoomGUIFloor1;
 
-            _gameField[0, 2, 0] = spawnRoomFloor1; //Fixed SpawnRoom on Floor 0
-
-
-            //_gameField[0, 2, 2] = BossRoomFloor1;//Fixed BossRoom on Floor 0
-            //_gameField[1, 2, 2] = BossRoomFloor2;//Fixed BossRoom on Floor 1
-            //_gameField[2, 2, 2] = BossRoomFloor3;//Fixed BossRoom on Floor 2
-
-            RoomTypeManager roomTypeManager = new RoomTypeManager(); //Dependency 
+            ClearGameField();
+           
+            RoomTypeManager roomTypeManager = new RoomTypeManager();
 
             for (int z = 0; z <= gameFieldMaxZ - 1; z++)
             {
@@ -86,17 +67,6 @@ namespace Brickventure_Library.Environment
                             {
                                 northRoom = _gameField[z, y - 1, x].GetRoomType();
                             }
-
-
-                            //prüfung - constrains
-                            //if (westRoom == RoomType.ShopRoom || northRoom == RoomType.ShopRoom)
-                            //{
-                            //    roomTypeManager.ExcludeShopRoom = true;
-                            //}
-                            //if (westRoom == RoomType.UpgradeRoom || northRoom == RoomType.UpgradeRoom)
-                            //{
-                            //    roomTypeManager.ExcludeUpgradeRoom = true;
-                            //}
                             if (westRoom == RoomType.HealRoom || northRoom == RoomType.HealRoom)
                             {
                                 roomTypeManager.ExcludeHealRoom = true;
@@ -106,7 +76,7 @@ namespace Brickventure_Library.Environment
 
                             //create
                             _gameField[z, y, x] = new Room(roomTypeManager.GetRandomRoomType(), z, y, x);
-                            if (_gameField[z, y, x].GetRoomType() == RoomType.EnemyRoom)
+                            if (_gameField[z, y, x].GetRoomType() == RoomType.EnemyRoom && _gameField[z,y,x] != _gameField[0,2,0])
                             {
                                 _enemy = new Enemy();
                                 _gameField[z, y, x].AddPartecipant(_enemy);
@@ -120,6 +90,7 @@ namespace Brickventure_Library.Environment
                     }
                 }
             }
+            
         }
 
         public void MovePlayer(Direction direction)
@@ -206,7 +177,7 @@ namespace Brickventure_Library.Environment
         {
             _player = player;
             _player.SetRoom(_gameField[0, 2, 0]);
-            _gameField[0, 2, 0].AddPartecipant(player);
+            _gameField[0, 2, 0].AddPartecipant(_player);
         }
 
         public int GetX()
@@ -240,6 +211,30 @@ namespace Brickventure_Library.Environment
                 }
             }
             return true;
+        }
+
+        public void Restart()
+        {
+            GenerateRooms();
+
+            _gameField[0, 2, 0].SetRoomType(RoomType.SpawnRoom);
+            _player.SetRoom(_gameField[0, 2, 0]);
+            _gameField[0, 2, 0].AddPartecipant(_player);
+        }
+
+        private void ClearGameField()
+        {
+
+            for (int z = 0; z <= gameFieldMaxZ - 1; z++)
+            {
+                for (int y = 0; y <= gameFieldMaxY - 1; y++)
+                {
+                    for (int x = 0; x <= gameFieldMaxX - 1; x++)
+                    {
+                        _gameField[z, y, x] = null;
+                    }
+                }
+            }
         }
     }
 }

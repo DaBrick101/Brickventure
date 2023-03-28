@@ -52,16 +52,21 @@ namespace Brickventure_Library_0._1.States
                 }
                 else
                 {
-                    if (_player.GetState().GetType() == typeof(AttackPlayerState))
-                    {
-                        Console.WriteLine($"State  defend");
-                        _player.SetState(new DefendPlayerState(_world));
-                    }
-                    else
-                    {
-                        Console.WriteLine($"State  attack");
-                        _player.SetState(new AttackPlayerState(_world));
-                    }
+                    //Random State Attack||Defend
+                    SetRandomState();
+
+                    //Attack -> Defend Logic
+                    //if (_player.GetState().GetType() == typeof(AttackPlayerState))
+                    //{
+                    //    Console.WriteLine($"State  defend");
+                    //    _player.SetState(new DefendPlayerState(_world));
+                    //}
+                    //else
+                    //{
+                    //    Console.WriteLine($"State  attack");
+                    //    SetRandomState();
+
+                    //}
                 }
             }
             else
@@ -76,10 +81,25 @@ namespace Brickventure_Library_0._1.States
             {
                 return;
             }
-            var timer = new Timer(5000);
+            var timer = new Timer(3000);
             timer.Elapsed += PlayerStateChange;
             timer.Start();
             _isRunning = true;
+        }
+
+        public void SetRandomState()
+        {
+            Random rnd = new Random();
+            int num = rnd.Next(1, 3);
+
+            if (num == 1)
+            {
+                _player.SetState(new AttackPlayerState(_world));
+            }
+            else
+            {
+                _player.SetState(new DefendPlayerState(_world));
+            }
         }
     }
 }

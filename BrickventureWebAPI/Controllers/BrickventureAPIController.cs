@@ -17,11 +17,16 @@ namespace BrickventureWebAPI.Controllers
     [ApiController]
     public class BrickventureAPIController : Controller
     {
+        
         private readonly IWorld _world;
         private readonly IOutputMessageWriter _messageWriter;
         private readonly IController _controller;
         private readonly IOutputMessageWriter _outputMessageWriter;
         private readonly IPlayerStateTimer _playerStateTimer;
+        
+        private bool isRestarting;
+        private WorldDTO lastWorldDto;
+        
         public BrickventureAPIController(IWorld world, IOutputMessageWriter messageWriter, IController controller, IOutputMessageWriter outputMessageWriter, IPlayerStateTimer playerStateTimer)
         {
             _world = world;
@@ -35,9 +40,13 @@ namespace BrickventureWebAPI.Controllers
         [Microsoft.AspNetCore.Mvc.Route("GetWorldGameField")]
         public WorldDTO GetWorldGameField()
         {
+            if (isRestarting) return lastWorldDto;
+
+            lastWorldDto = new WorldDTO(_world, _outputMessageWriter);
             _playerStateTimer.Start();
-            return new WorldDTO(_world, _outputMessageWriter);
+            return lastWorldDto;
         }
+
 
         [HttpGet]
         [Microsoft.AspNetCore.Mvc.Route("CreatePlayer")]
@@ -45,6 +54,17 @@ namespace BrickventureWebAPI.Controllers
         {
             var p = new Player(_world, _messageWriter);
             return new PartecipantDTO(p);
+        }
+
+        [HttpGet]
+        [Microsoft.AspNetCore.Mvc.Route("Restart")]
+        public WorldDTO Restart()
+        {
+            isRestarting = true;
+            _world.GetPlayer().SetHealth(3);
+            _world.Restart();
+            isRestarting = false;
+            return new WorldDTO(_world, _outputMessageWriter);
         }
 
         [HttpGet]

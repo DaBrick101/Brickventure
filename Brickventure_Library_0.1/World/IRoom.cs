@@ -19,5 +19,6 @@ namespace Brickventure_Library.Environment
         public void SetWasVisitedByPlayer();
         public bool GetWasVisitedByPlayer();
         public RoomType GetRoomType();
+        void SetRoomType(RoomType roomtype);
     }
 }

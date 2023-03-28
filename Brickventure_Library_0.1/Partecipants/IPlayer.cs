@@ -7,6 +7,9 @@ namespace Brickventure_Library.Partecipants
         void SetState(IPlayerState state);
         IPlayerState GetState();
         int GetHealth();
+        void IncreaseHealth();
+        void DecreaseHealth();
+        void SetHealth(int health);
 
     }
 }

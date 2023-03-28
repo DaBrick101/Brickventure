@@ -19,6 +19,7 @@ namespace BrickventureWebAPI.DTOs
         }
         public void Assign(IRoom room)
         {
+            if (room == null) return;
             AssignPartecipants(room);
             RoomType = room.GetRoomType();
             WasVisitedByPlayer = room.GetWasVisitedByPlayer();
@@ -28,6 +29,8 @@ namespace BrickventureWebAPI.DTOs
         }
         public void AssignPartecipants(IRoom room)
         {
+            if (room == null) return;
+
             var iPartecipants = room.GetPartecipants();
             if (iPartecipants != null)
             {

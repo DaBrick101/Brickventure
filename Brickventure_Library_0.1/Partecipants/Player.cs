@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 using Brickventure_Library.Environment;
 using Brickventure_Library.Partecipants;
 using Brickventure_Library_0._1.States;
@@ -42,8 +43,7 @@ namespace Brickventure_Library_0._1.Partecipants
                 else if (_state is DefendPlayerState)
                 {
                     Console.WriteLine("must defend");
-                    _writer.Write("You missed!!! Quick you have to Defend"); 
-                    _health = _health - 1;
+                    _writer.Write("Quick you have to Defend");
                 }
                 else if (_state is DeadPlayerState)
                 {
@@ -52,7 +52,7 @@ namespace Brickventure_Library_0._1.Partecipants
                 }
                 else if (_state is WonPlayerState)
                 {
-                    _writer.Write("You Won!!!");
+                    _writer.Write("YOU WON!!!");
                 }
                 
 
@@ -66,6 +66,21 @@ namespace Brickventure_Library_0._1.Partecipants
         public int GetHealth()
         {
             return _health;
+        }
+
+        public void IncreaseHealth()
+        {
+            _health++;
+        }
+
+        public void DecreaseHealth()
+        {
+            _health--;
+        }
+
+        public void SetHealth(int health)
+        {
+            _health = health;
         }
     }
 }

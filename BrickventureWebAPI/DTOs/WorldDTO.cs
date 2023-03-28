@@ -9,12 +9,14 @@ namespace BrickventureWebAPI.DTOs
     {
         private readonly IWorld _world;
         public string Message { get; set; }
+        public int Health { get; set; }
         public IList<RoomDTO> GameField { get; set; }
 
         public WorldDTO(IWorld world, IOutputMessageWriter messageOutputWriter)
         {
             _world = world;
             Message = messageOutputWriter.GetMessage();
+            Health = _world.GetPlayer().GetHealth();
             GameField = GetRoomDTOList();
         }
         private IList<RoomDTO> GetRoomDTOList()

@@ -16,5 +16,6 @@ namespace Brickventure_Library.Environment
         int GetZ();
 
         bool DidPlayerWin();
+        void Restart();
     }
 }

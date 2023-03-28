@@ -26,6 +26,10 @@ namespace Brickventure_Library_0._1.States
 
         public bool WasSuccessfull()
         {
+            if (!wasDefended)
+            {
+                _world.GetPlayer().DecreaseHealth();
+            }
             return wasDefended;
         }
     }

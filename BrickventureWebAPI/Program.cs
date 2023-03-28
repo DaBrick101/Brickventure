@@ -19,7 +19,7 @@ builder.Services.AddSingleton<IPlayer, Player>();
 builder.Services.AddSingleton<IController, KeyboardController>();
 builder.Services.AddSingleton<IPlayerStateTimer, PlayerStateTimer>();
 builder.Services.AddSingleton<IOutputMessageWriter, ApiOutputMessageWriter >();
-builder.Services.AddSingleton< ICommand, MoveNorthCommand >() ;
+builder.Services.AddSingleton<ICommand, MoveNorthCommand >() ;
 builder.Services.AddSingleton<ICommand , MoveEastCommand >();
 builder.Services.AddSingleton<ICommand, MoveSouthCommand>();
 builder.Services.AddSingleton<ICommand, MoveWestCommand>();
