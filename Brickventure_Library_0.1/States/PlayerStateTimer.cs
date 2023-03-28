@@ -21,7 +21,7 @@ namespace Brickventure_Library_0._1.States
         {
             _player = player;
             _world = world;
-            _interval = 5000;
+            _interval = 3000;
         }
 
         //Check if i get stateX if StateY
