@@ -9,6 +9,7 @@ namespace BrickventureWebAPI.DTOs
         public RoomType RoomType { get; set; }
         public List<PartecipantDTO> Partecipants { get; set; }
         public bool WasVisitedByPlayer { get; set; }
+        public int IsActive { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public int Z { get; set; }
@@ -23,6 +24,7 @@ namespace BrickventureWebAPI.DTOs
             AssignPartecipants(room);
             RoomType = room.GetRoomType();
             WasVisitedByPlayer = room.GetWasVisitedByPlayer();
+            IsActive = room.GetActivity();
             X = room.GetX();
             Y = room.GetY();
             Z = room.GetZ();

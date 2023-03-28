@@ -14,12 +14,14 @@ namespace Brickventure_Library_0._1.States
         private readonly IPlayer _player;
         private readonly IWorld _world;
         private bool _isRunning;
+        private int _interval;
         
         
         public PlayerStateTimer(IPlayer player, IWorld world)
         {
             _player = player;
             _world = world;
+            _interval = 5000;
         }
 
         //Check if i get stateX if StateY
@@ -36,6 +38,30 @@ namespace Brickventure_Library_0._1.States
                 _player.SetState(new WonPlayerState());
                 return;
             }
+
+            if (_world.GetCurrentRoom().GetRoomType() == RoomType.HealRoom &&
+                _world.GetCurrentRoom().GetPartecipants().OfType<IPlayer>().Any())
+            {
+                if (_world.GetCurrentRoom().GetActivity() == 1)
+                {
+                    _player.IncreaseHealth();
+                    _world.GetCurrentRoom().ChangeActivity(0);
+                    return;
+                }
+
+                return;
+
+            }
+
+            // if (_player.GetState().GetType() == typeof(AttackPlayerState))
+            // {
+            //     if (_player.GetState().WasSuccessfull())
+            //     {
+            //         IncreaseDifficulty(250);
+            //         Console.WriteLine("Interval:" + _interval);
+            //     }
+            //
+            // }
             if (_world.GetCurrentRoom().GetRoomType() == RoomType.EnemyRoom && _world.GetCurrentRoom().GetPartecipants().OfType<IEnemy>().Any())
             {
                 if (_player.GetState() != null && !_player.GetState().WasSuccessfull())
@@ -81,7 +107,7 @@ namespace Brickventure_Library_0._1.States
             {
                 return;
             }
-            var timer = new Timer(3000);
+            var timer = new Timer(_interval);
             timer.Elapsed += PlayerStateChange;
             timer.Start();
             _isRunning = true;
@@ -100,6 +126,11 @@ namespace Brickventure_Library_0._1.States
             {
                 _player.SetState(new DefendPlayerState(_world));
             }
+        }
+
+        public void IncreaseDifficulty(int amount)
+        {
+            _interval -= amount;
         }
     }
 }

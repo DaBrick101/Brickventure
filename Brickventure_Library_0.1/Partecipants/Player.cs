@@ -38,12 +38,12 @@ namespace Brickventure_Library_0._1.Partecipants
                 if (_state is AttackPlayerState)
                 {
                     Console.WriteLine("must attack");
-                    _writer.Write("Quick you have to Attack!!!");
+                    _writer.Write("Attack!");
                 }
                 else if (_state is DefendPlayerState)
                 {
                     Console.WriteLine("must defend");
-                    _writer.Write("Quick you have to Defend");
+                    _writer.Write("Defend!");
                 }
                 else if (_state is DeadPlayerState)
                 {

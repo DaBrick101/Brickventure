@@ -10,6 +10,7 @@ namespace Brickventure_Library_0._1.Environment
         private RoomType _roomType;
         private List<IPartecipant> _participants;
         private bool wasVisitedByPlayer;
+        private int _isActive;
         private int _z;
         private int _y;
         private int _x;
@@ -24,6 +25,7 @@ namespace Brickventure_Library_0._1.Environment
             _y = y;
             _x = x;
 
+            _isActive = 1;
 
         }
         public RoomType GetRoomType()
@@ -78,6 +80,15 @@ namespace Brickventure_Library_0._1.Environment
         {
             this._roomType = roomtype;
         }
-        
+
+        public void ChangeActivity(int isActive)
+        {
+            _isActive = isActive;
+        }
+
+        public int GetActivity()
+        {
+            return _isActive;
+        }
     }
 }

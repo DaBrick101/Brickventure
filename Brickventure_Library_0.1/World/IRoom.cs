@@ -20,5 +20,7 @@ namespace Brickventure_Library.Environment
         public bool GetWasVisitedByPlayer();
         public RoomType GetRoomType();
         void SetRoomType(RoomType roomtype);
+        public void ChangeActivity(int isActive);
+        public int GetActivity();
     }
 }
