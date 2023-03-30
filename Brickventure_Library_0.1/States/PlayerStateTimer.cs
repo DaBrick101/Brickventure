@@ -15,13 +15,14 @@ namespace Brickventure_Library_0._1.States
         private readonly IWorld _world;
         private bool _isRunning;
         private int _interval;
-        
+        private Timer _timer;
         
         public PlayerStateTimer(IPlayer player, IWorld world)
         {
             _player = player;
             _world = world;
-            _interval = 3000;
+            _interval = 2500;
+            _timer = new Timer();
         }
 
         //Check if i get stateX if StateY
@@ -78,8 +79,17 @@ namespace Brickventure_Library_0._1.States
                 }
                 else
                 {
+                    // Console.WriteLine(_player.GetState().GetType());
+                   
                     //Random State Attack||Defend
                     SetRandomState();
+                    if (_player.GetState().GetType() == typeof(AttackPlayerState))
+                    {
+
+                        IncreaseDifficulty(250);
+                        Console.WriteLine("Interval Updated:" + _interval);
+
+                    }
 
                     //Attack -> Defend Logic
                     //if (_player.GetState().GetType() == typeof(AttackPlayerState))
@@ -103,14 +113,14 @@ namespace Brickventure_Library_0._1.States
 
         public void Start()
         {
-            if (_isRunning)
+            if (!_isRunning)
             {
-                return;
+                _timer.Interval = _interval;
+                _timer.Elapsed += PlayerStateChange;
+                _timer.Start();
+                _isRunning = true;
             }
-            var timer = new Timer(_interval);
-            timer.Elapsed += PlayerStateChange;
-            timer.Start();
-            _isRunning = true;
+            
         }
 
         public void SetRandomState()
@@ -130,7 +140,8 @@ namespace Brickventure_Library_0._1.States
 
         public void IncreaseDifficulty(int amount)
         {
-            _interval -= amount;
+            //_interval = _interval - amount;
+            _timer.Interval = _interval;
         }
     }
 }
