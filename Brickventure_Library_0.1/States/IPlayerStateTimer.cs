@@ -3,6 +3,8 @@
     public interface IPlayerStateTimer
     {
         void Start();
+        void Stop();
         void IncreaseDifficulty(int amount);
+        void Reset();
     }
 }

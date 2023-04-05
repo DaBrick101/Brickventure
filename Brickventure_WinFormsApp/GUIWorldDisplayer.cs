@@ -85,7 +85,6 @@ namespace Brickventure_WinFormsApp
         {
             //.ImageLocation = picture;//Set Stani IMG for Rooms something like ?
             //same here bruh
-            //yarrak yarr
         }
 
         public void FillRoomList()

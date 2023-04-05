@@ -69,7 +69,7 @@ namespace Brickventure_Library_0._1.States
                 {
                     if (_player.GetHealth() <= 0)
                     {
-                        Console.WriteLine($"State  dead");
+                        //Console.WriteLine($"State  dead");
                         _player.SetState(new DeadPlayerState());
                     }
                     else
@@ -86,12 +86,13 @@ namespace Brickventure_Library_0._1.States
                     if (_player.GetState().GetType() == typeof(AttackPlayerState))
                     {
 
-                        IncreaseDifficulty(250);
+                        IncreaseDifficulty(50);
                         Console.WriteLine("Interval Updated:" + _interval);
 
                     }
 
-                    //Attack -> Defend Logic
+
+                    //Attack -> Defend Logic Old
                     //if (_player.GetState().GetType() == typeof(AttackPlayerState))
                     //{
                     //    Console.WriteLine($"State  defend");
@@ -123,6 +124,21 @@ namespace Brickventure_Library_0._1.States
             
         }
 
+        public void Stop()
+        {
+            
+            _timer.Stop();
+            _interval = 2500;
+            _isRunning = false;
+        }
+
+        public void Reset()
+        {
+            _timer.Dispose();
+            _timer = new Timer();
+            _interval = 2500;
+            _isRunning = false;
+        }
         public void SetRandomState()
         {
             Random rnd = new Random();
@@ -140,7 +156,7 @@ namespace Brickventure_Library_0._1.States
 
         public void IncreaseDifficulty(int amount)
         {
-            //_interval = _interval - amount;
+            _interval = _interval - amount;
             _timer.Interval = _interval;
         }
     }

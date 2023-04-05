@@ -18,8 +18,8 @@ namespace Brickventure_WinFormsApp
         private Dictionary<IRoom, PictureBox> _guiRoomMap = new Dictionary<IRoom, PictureBox>();
         private IRoom[,,] _gameField;
         private int gameFieldMaxZ = 1;
-        private int gameFieldMaxY = 3;
-        private int gameFieldMaxX = 3;
+        private int gameFieldMaxY = 5;
+        private int gameFieldMaxX = 5;
         private string _key;
 
         public BrickventureForm(IWorld world)
@@ -43,51 +43,26 @@ namespace Brickventure_WinFormsApp
             _GUIRooms.Add(Room_3);
             _GUIRooms.Add(Room_4);
             _GUIRooms.Add(Room_5);
-            _GUIRooms.Add(Room_6);
-            _GUIRooms.Add(Room_7);
-            _GUIRooms.Add(Room_8);
-            _GUIRooms.Add(Room_9);
-            _GUIRooms.Add(Room_10);
             _GUIRooms.Add(Room_11);
             _GUIRooms.Add(Room_12);
             _GUIRooms.Add(Room_13);
             _GUIRooms.Add(Room_14);
             _GUIRooms.Add(Room_15);
-            _GUIRooms.Add(Room_16);
-            _GUIRooms.Add(Room_17);
-            _GUIRooms.Add(Room_18);
-            _GUIRooms.Add(Room_19);
-            _GUIRooms.Add(Room_20);
             _GUIRooms.Add(Room_21);
             _GUIRooms.Add(Room_22);
             _GUIRooms.Add(Room_23);
             _GUIRooms.Add(Room_24);
             _GUIRooms.Add(Room_25);
-            _GUIRooms.Add(Room_26);
-            _GUIRooms.Add(Room_27);
-            _GUIRooms.Add(Room_28);
-            _GUIRooms.Add(Room_29);
-            _GUIRooms.Add(Room_30);
             _GUIRooms.Add(Room_31);
             _GUIRooms.Add(Room_32);
             _GUIRooms.Add(Room_33);
             _GUIRooms.Add(Room_34);
             _GUIRooms.Add(Room_35);
-            _GUIRooms.Add(Room_36);
-            _GUIRooms.Add(Room_37);
-            _GUIRooms.Add(Room_38);
-            _GUIRooms.Add(Room_39);
-            _GUIRooms.Add(Room_40);
             _GUIRooms.Add(Room_41);
             _GUIRooms.Add(Room_42);
             _GUIRooms.Add(Room_43);
             _GUIRooms.Add(Room_44);
             _GUIRooms.Add(Room_45);
-            _GUIRooms.Add(Room_46);
-            _GUIRooms.Add(Room_47);
-            _GUIRooms.Add(Room_48);
-            _GUIRooms.Add(Room_49);
-            _GUIRooms.Add(Room_50);
         }
         public List<PictureBox> GetPictureBoxes()
         {

@@ -48,7 +48,6 @@ namespace Brickventure_Library.Environment
                             RoomType? westRoom;
 
 
-
                             //collect 
                             if (x == 0)
                             {

@@ -34,6 +34,8 @@ namespace BrickventureWebAPI.Controllers
             _controller = controller;
             _outputMessageWriter = outputMessageWriter;
             _playerStateTimer = playerStateTimer;
+
+            _playerStateTimer.Start();
         }
 
         [HttpGet]
@@ -41,9 +43,7 @@ namespace BrickventureWebAPI.Controllers
         public WorldDTO GetWorldGameField()
         {
             if (isRestarting) return lastWorldDto;
-
             lastWorldDto = new WorldDTO(_world, _outputMessageWriter);
-            _playerStateTimer.Start();
             return lastWorldDto;
         }
 
@@ -61,6 +61,7 @@ namespace BrickventureWebAPI.Controllers
         public WorldDTO Restart()
         {
             isRestarting = true;
+            _playerStateTimer.Reset();
             _world.GetPlayer().SetHealth(3);
             _world.Restart();
             isRestarting = false;
