@@ -1,6 +1,6 @@
-﻿using System;
-using Brickventure_Library.Environment;
+﻿using Brickventure_Library.Environment;
 using Brickventure_Library.Partecipants;
+using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Timers;
@@ -16,7 +16,7 @@ namespace Brickventure_Library_0._1.States
         private bool _isRunning;
         private int _interval;
         private Timer _timer;
-        
+
         public PlayerStateTimer(IPlayer player, IWorld world)
         {
             _player = player;
@@ -80,7 +80,7 @@ namespace Brickventure_Library_0._1.States
                 else
                 {
                     // Console.WriteLine(_player.GetState().GetType());
-                   
+
                     //Random State Attack||Defend
                     SetRandomState();
                     if (_player.GetState().GetType() == typeof(AttackPlayerState))
@@ -121,12 +121,12 @@ namespace Brickventure_Library_0._1.States
                 _timer.Start();
                 _isRunning = true;
             }
-            
+
         }
 
         public void Stop()
         {
-            
+
             _timer.Stop();
             _interval = 2500;
             _isRunning = false;

@@ -1,6 +1,4 @@
 ﻿using Brickventure_Library.Environment;
-using Brickventure_Library.Partecipants;
-using Brickventure_Library_0._1.Environment;
 
 namespace BrickventureWebAPI.DTOs
 {

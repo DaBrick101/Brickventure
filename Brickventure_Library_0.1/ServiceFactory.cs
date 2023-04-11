@@ -29,7 +29,7 @@ namespace Brickventure_Library_0._1
             builder.RegisterType<DisplayWorldCommand>().Keyed<ICommand>("display");
             builder.RegisterType<Invoker>().As<IInvoker>();
             builder.RegisterType<PlayerStateTimer>().As<IPlayerStateTimer>();
-            
+
 
 
             return builder;

@@ -1,36 +1,32 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
-using Brickventure_Library.Environment;
+﻿using Brickventure_Library.Environment;
 using Brickventure_Library_0._1;
 using Brickventure_Library_0._1.Commands;
-using Brickventure_Library_0._1.Environment;
 using Brickventure_Library_0._1.Partecipants;
 using Brickventure_Library_0._1.States;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using BrickventureWebAPI.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BrickventureWebAPI.Controllers
 {
-    
+
     [Microsoft.AspNetCore.Mvc.Route("api/brickventureAPI")]
     [ApiController]
     public class BrickventureAPIController : Controller
     {
-        
+
         private readonly IWorld _world;
         private readonly IOutputMessageWriter _messageWriter;
         private readonly IController _controller;
         private readonly IOutputMessageWriter _outputMessageWriter;
         private readonly IPlayerStateTimer _playerStateTimer;
-        
+
         private bool isRestarting;
         private WorldDTO lastWorldDto;
-        
+
         public BrickventureAPIController(IWorld world, IOutputMessageWriter messageWriter, IController controller, IOutputMessageWriter outputMessageWriter, IPlayerStateTimer playerStateTimer)
         {
             _world = world;
-            _messageWriter = messageWriter; 
+            _messageWriter = messageWriter;
             _controller = controller;
             _outputMessageWriter = outputMessageWriter;
             _playerStateTimer = playerStateTimer;
@@ -63,6 +59,7 @@ namespace BrickventureWebAPI.Controllers
             isRestarting = true;
             _playerStateTimer.Reset();
             _world.GetPlayer().SetHealth(3);
+            _messageWriter.Clear();
             _world.Restart();
             isRestarting = false;
             return new WorldDTO(_world, _outputMessageWriter);
@@ -101,7 +98,7 @@ namespace BrickventureWebAPI.Controllers
         public WorldDTO MoveRight()
         {
             _outputMessageWriter.Clear();
-            
+
             _controller.PerformCommand("d");
             return new WorldDTO(_world, _outputMessageWriter);
         }

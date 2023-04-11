@@ -2,7 +2,6 @@
 using Brickventure_Library.Partecipants;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -37,7 +36,7 @@ namespace Brickventure_WinFormsApp
             {
                 //ignore
             }
-           
+
             for (int y = 0; y <= _world.GetY() - 1; y++)
             {
                 Console.WriteLine("");
@@ -57,15 +56,15 @@ namespace Brickventure_WinFormsApp
                     else if (gameField[0, y, x].GetWasVisitedByPlayer())
                     {
                         //DisplayRoom(_roomTypeMap[currentRoomType]);//Display Room as Roomtype, have to do some check to know wich roomtype is wich IMG
-                        if(gameField[0,y,x].GetRoomType() == RoomType.SpawnRoom)
+                        if (gameField[0, y, x].GetRoomType() == RoomType.SpawnRoom)
                         {
                             _guiRoomMap[gameField[0, y, x]].ImageLocation = @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\Spawn-Final.png";
                         }
-                        else if(gameField[0, y, x].GetRoomType() == RoomType.EnemyRoom)
+                        else if (gameField[0, y, x].GetRoomType() == RoomType.EnemyRoom)
                         {
                             _guiRoomMap[gameField[0, y, x]].ImageLocation = @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\Enemy-Final.png";
                         }
-                        else if(gameField[0, y, x].GetRoomType() == RoomType.HealRoom)
+                        else if (gameField[0, y, x].GetRoomType() == RoomType.HealRoom)
                         {
                             _guiRoomMap[gameField[0, y, x]].ImageLocation = @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\Heal-Final.png";
                         }
@@ -74,7 +73,7 @@ namespace Brickventure_WinFormsApp
             }
         }
         public void CreateRoomTypeMap()//TODO Rename
-            // 180 days later, brick forgot and is never going to change the name xD
+                                       // 180 days later, brick forgot and is never going to change the name xD
         {
             _roomTypeMap.Add(RoomType.SpawnRoom, @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\Spawn-Final.png");
             _roomTypeMap.Add(RoomType.EnemyRoom, @"C:\Users\lbhbur1\source\repos\Brickventure_Library_0.1\Brickventure_WinFormsApp\Images\Enemy-Final.png");

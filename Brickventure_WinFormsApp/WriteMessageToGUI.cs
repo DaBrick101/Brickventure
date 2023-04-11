@@ -1,12 +1,6 @@
-﻿using Brickventure_Library.Environment;
-using Brickventure_Library_0._1;
-using Brickventure_Library_0._1.States;
-using System.Windows.Forms;
+﻿using Brickventure_Library_0._1;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Brickventure_WinFormsApp
 {
@@ -18,7 +12,7 @@ namespace Brickventure_WinFormsApp
         {
             _form = form;
         }
-       
+
         public void Write(string message)
         {
 

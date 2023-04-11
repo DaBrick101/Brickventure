@@ -3,7 +3,6 @@ using Brickventure_Library_0._1.Commands;
 using Brickventure_Library_0._1.States;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Brickventure_WinFormsApp
@@ -88,7 +87,7 @@ namespace Brickventure_WinFormsApp
             }
 
         }
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
             button1.Visible = false;
@@ -104,7 +103,7 @@ namespace Brickventure_WinFormsApp
         private void BrickventureForm_KeyDown(object sender, KeyEventArgs e)
         {
             info_Textbox.Clear();
-            
+
             _key = e.KeyCode.ToString().ToLower();
             _keyboardController.PerformCommand(_key);
             displayWorld.Execute();

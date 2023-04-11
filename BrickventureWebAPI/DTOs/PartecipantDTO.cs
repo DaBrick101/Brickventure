@@ -1,5 +1,4 @@
-﻿using Brickventure_Library.Environment;
-using Brickventure_Library.Partecipants;
+﻿using Brickventure_Library.Partecipants;
 
 namespace BrickventureWebAPI.DTOs
 {
@@ -9,7 +8,7 @@ namespace BrickventureWebAPI.DTOs
 
         public PartecipantDTO(IPartecipant partecipant)
         {
-             Assign(partecipant);
+            Assign(partecipant);
         }
 
         public void Assign(IPartecipant partecipant)

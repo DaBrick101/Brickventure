@@ -3,7 +3,6 @@ using Brickventure_Library_0._1.Environment;
 using Brickventure_Library_0._1.Partecipants;
 using Brickventure_Library_0._1.States;
 using System.Linq;
-using System.Numerics;
 
 namespace Brickventure_Library.Environment
 {
@@ -32,7 +31,7 @@ namespace Brickventure_Library.Environment
         {
 
             ClearGameField();
-           
+
             RoomTypeManager roomTypeManager = new RoomTypeManager();
 
             for (int z = 0; z <= gameFieldMaxZ - 1; z++)
@@ -75,7 +74,7 @@ namespace Brickventure_Library.Environment
 
                             //create
                             _gameField[z, y, x] = new Room(roomTypeManager.GetRandomRoomType(), z, y, x);
-                            if (_gameField[z, y, x].GetRoomType() == RoomType.EnemyRoom && _gameField[z,y,x] != _gameField[0,2,0])
+                            if (_gameField[z, y, x].GetRoomType() == RoomType.EnemyRoom && _gameField[z, y, x] != _gameField[0, 2, 0])
                             {
                                 _enemy = new Enemy();
                                 _gameField[z, y, x].AddPartecipant(_enemy);
@@ -89,7 +88,7 @@ namespace Brickventure_Library.Environment
                     }
                 }
             }
-            
+
         }
 
         public void MovePlayer(Direction direction)

@@ -1,7 +1,6 @@
 ﻿using Brickventure_Library.Environment;
 using Brickventure_Library.Partecipants;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 
 namespace Brickventure_Library_0._1.Environment
 {

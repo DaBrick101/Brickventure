@@ -1,8 +1,7 @@
-﻿using System;
-using System.Text.Json.Serialization;
-using Brickventure_Library.Environment;
+﻿using Brickventure_Library.Environment;
 using Brickventure_Library.Partecipants;
 using Brickventure_Library_0._1.States;
+using System;
 
 
 namespace Brickventure_Library_0._1.Partecipants
@@ -54,7 +53,7 @@ namespace Brickventure_Library_0._1.Partecipants
                 {
                     _writer.Write("YOU WON!!!");
                 }
-                
+
 
             }
         }
