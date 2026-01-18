@@ -10,3 +10,5 @@ Second Version: Frontend was added (Winforms idk why)
 Third Version: I learnd Unittesting
 
 Fourth Version: Frontend is now Angular and i added a WebAPI.
+
+LINK TO FRONTEND: [Brickventure Frontend](https://github.com/DaBrick101/Brickventure-Frontend)
