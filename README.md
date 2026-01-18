@@ -9,4 +9,4 @@ Second Version: Frontend was added (Winforms idk why)
 
 Third Version: I learnd Unittesting
 
-Fourth Version: Stuff is about to get Crazy. Frontend is now Angular and i added a WebAPI.
+Fourth Version: Frontend is now Angular and i added a WebAPI.
